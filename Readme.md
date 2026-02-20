@@ -5,6 +5,7 @@ Contrato inteligente para rastreabilidade farmacêutica com padrão ERC-1155, co
 ## Escopo funcional
 
 O contrato `PharmaChainERP` implementa:
+
 - criação de lotes com validade (`mintBatch`);
 - aprovação e reprovação por qualidade (`releaseBatch`, `rejectBatch`);
 - recall sanitário (`executeRecall`);
@@ -44,11 +45,13 @@ O contrato `PharmaChainERP` implementa:
 ## Ambiente (Foundry)
 
 Dependências:
+
 - `openzeppelin-contracts-upgradeable` `v4.9.6`
 - `openzeppelin-contracts` `v4.9.6`
 - `forge-std`
 
 Comandos úteis:
+
 ```bash
 make build
 make test
@@ -58,6 +61,7 @@ make gas
 ## Deploy e configuração
 
 Fluxo local com Anvil:
+
 ```bash
 anvil
 cp .env.example .env
@@ -73,16 +77,19 @@ Para testnet, use seu `RPC_URL` e `PRIVATE_KEY` no `.env`.
 ## Testes e cobertura
 
 Status atual da suíte:
+
 - `43` testes passando (`forge test -vv`)
 - sem falhas
 
 Cobertura atual de `src/Cannabis.sol` (medida com `forge coverage` em 20/02/2026):
+
 - linhas: `99.41%` (`168/169`)
 - statements: `96.59%` (`170/176`)
 - branches: `87.62%` (`92/105`)
 - funções: `100%` (`28/28`)
 
 Execução por categoria:
+
 ```bash
 forge test --match-path test/PharmaChainERP.Unit.t.sol
 forge test --match-path test/PharmaChainERP.Integration.t.sol

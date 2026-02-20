@@ -1,0 +1,26 @@
+[compiler.solc]
+allow_paths = ["."]
+include_paths = ["node_modules", "lib"]
+exclude_paths = [
+  "node_modules",
+  "venv",
+  "script",
+  "cache",
+  "out",
+  "lib/openzeppelin-contracts/test",
+  "lib/openzeppelin-contracts/certora",
+  "lib/openzeppelin-contracts/lib",
+  "lib/openzeppelin-contracts-upgradeable/test",
+  "lib/openzeppelin-contracts-upgradeable/certora",
+  "lib/openzeppelin-contracts-upgradeable/lib"
+]
+remappings = [
+  "@openzeppelin/contracts-upgradeable/=lib/openzeppelin-contracts-upgradeable/contracts/",
+  "@openzeppelin/contracts/=lib/openzeppelin-contracts/contracts/",
+  "forge-std/=lib/forge-std/src/"
+]
+target_version = "0.8.20"
+
+[compiler.solc.optimizer]
+enabled = true
+runs = 200

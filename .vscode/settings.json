@@ -1,4 +1,26 @@
 {
+    "wake.configuration.use_toml_if_present": true,
+    "Tools-for-Solidity.wake.configuration.autoimport_remappings": false,
+    "wake.compiler.solc.include_paths": [
+        "node_modules",
+        "lib"
+    ],
+    "wake.compiler.solc.allow_paths": [
+        "."
+    ],
+    "wake.compiler.solc.exclude_paths": [
+        "node_modules",
+        "venv",
+        "script",
+        "cache",
+        "out",
+        "lib/openzeppelin-contracts/test",
+        "lib/openzeppelin-contracts/certora",
+        "lib/openzeppelin-contracts/lib",
+        "lib/openzeppelin-contracts-upgradeable/test",
+        "lib/openzeppelin-contracts-upgradeable/certora",
+        "lib/openzeppelin-contracts-upgradeable/lib"
+    ],
     "wake.compiler.solc.remappings": [
         "@openzeppelin/contracts-upgradeable/=lib/openzeppelin-contracts-upgradeable/contracts/",
         "@openzeppelin/contracts/=lib/openzeppelin-contracts/contracts/",
