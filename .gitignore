@@ -1,0 +1,15 @@
+# Foundry build artifacts
+out/
+cache/
+
+# Local env
+.env
+
+# Coverage artifacts
+coverage.lcov
+
+# Dependencies (reinstall with forge install)
+lib/
+
+# IDE/system
+.DS_Store
