@@ -2,6 +2,11 @@
 
 💊 Contrato inteligente para rastreabilidade farmacêutica com padrão ERC-1155, controle de acesso por papéis (RBAC), trilha documental e fluxo logístico com reconciliação de massa.
 
+## 👤 Autor
+
+- Wesley Rodrigues Tereciani
+- Especialista Fullstack WEB3/Blockchain
+
 ## 🎯 Escopo funcional
 
 O contrato `PharmaChainERP` implementa:
