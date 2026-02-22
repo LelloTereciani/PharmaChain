@@ -276,8 +276,6 @@ contract PharmaChainERP is
         require(block.timestamp < batches[batchId].expDate, "ERRO: Lote vencido");
         require(balanceOf(msg.sender, batchId) >= _qty, "Saldo insuficiente");
 
-        _performManagedTransfer(msg.sender, _carrier, batchId, _qty);
-
         _shipmentIdCounter.increment();
         uint256 shipmentId = _shipmentIdCounter.current();
 
@@ -297,8 +295,11 @@ contract PharmaChainERP is
 
         _batchShipmentIds[batchId].push(shipmentId);
         activeShipmentIdByBatch[batchId] = shipmentId;
-
         _changeStatus(batchId, BatchStatus.IN_TRANSIT, "Despachado para transportadora");
+
+        // Effects first, transfer interaction last to reduce reentrancy surface
+        _performManagedTransfer(msg.sender, _carrier, batchId, _qty);
+
         emit ShipmentDispatched(batchId, shipmentId, _carrier, msg.sender, _destination, _qty);
     }
 

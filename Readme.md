@@ -1,8 +1,8 @@
 # PharmaChainERP
 
-Contrato inteligente para rastreabilidade farmacêutica com padrão ERC-1155, controle de acesso por papéis (RBAC), trilha documental e fluxo logístico com reconciliação de massa.
+💊 Contrato inteligente para rastreabilidade farmacêutica com padrão ERC-1155, controle de acesso por papéis (RBAC), trilha documental e fluxo logístico com reconciliação de massa.
 
-## Escopo funcional
+## 🎯 Escopo funcional
 
 O contrato `PharmaChainERP` implementa:
 
@@ -14,7 +14,7 @@ O contrato `PharmaChainERP` implementa:
 - bloqueio de transferência direta de tokens (`safeTransferFrom`/`safeBatchTransferFrom`);
 - upgrade UUPS com autorização por `ADMIN_ROLE`.
 
-## Papéis (RBAC)
+## 🛡️ Papéis (RBAC)
 
 - `ADMIN_ROLE`: governança, pause/unpause e upgrades.
 - `ORACLE_ROLE`: atualização de licenças de atores.
@@ -22,7 +22,7 @@ O contrato `PharmaChainERP` implementa:
 - `QUALITY_ROLE`: liberação, reprovação e recall.
 - `LOGISTICS_ROLE`: fluxo logístico e documentos de transporte.
 
-## Regras de segurança e compliance
+## 🔐 Regras de segurança e compliance
 
 - validação de existência de lote em operações sensíveis;
 - validação de entradas (GTIN, hashes, URIs, endereços e quantidades);
@@ -31,7 +31,7 @@ O contrato `PharmaChainERP` implementa:
 - pausa global operacional (`pauseContract`/`unpauseContract`);
 - política de transições válidas de status.
 
-## Estrutura do projeto
+## 🧱 Estrutura do projeto
 
 - Contrato principal: `src/Cannabis.sol`
 - Testes base/shared: `test/PharmaChainERPBase.t.sol`
@@ -42,7 +42,7 @@ O contrato `PharmaChainERP` implementa:
 - Testes de segurança: `test/PharmaChainERP.Security.t.sol`
 - Scripts de deploy/configuração: `script/DeployPharmaChain.s.sol`, `script/ConfigurePharmaChainRoles.s.sol`
 
-## Ambiente (Foundry)
+## ⚙️ Ambiente (Foundry)
 
 Dependências:
 
@@ -58,7 +58,7 @@ make test
 make gas
 ```
 
-## Deploy e configuração
+## 🚀 Deploy e configuração
 
 Fluxo local com Anvil:
 
@@ -74,7 +74,7 @@ make roles
 
 Para testnet, use seu `RPC_URL` e `PRIVATE_KEY` no `.env`.
 
-## Testes e cobertura
+## 🧪 Testes e cobertura
 
 Status atual da suíte:
 
@@ -98,7 +98,10 @@ forge test --match-path test/PharmaChainERP.Gas.t.sol
 forge test --match-path test/PharmaChainERP.Security.t.sol
 ```
 
-## Observações
+## 📝 Observações
 
 - O contrato é upgradeável (UUPS), então o deploy recomendado em ambientes reais é via proxy.
-- O arquivo `tests/Cannabis_Test.sol` é legado e não faz parte da suíte ativa em `test/`.
+
+## 🔗 Referências
+
+- [GMP Compliance](https://www.gmp-compliance.org/)
