@@ -1,112 +1,42 @@
 # PharmaChainERP
 
-💊 Contrato inteligente para rastreabilidade farmacêutica com padrão ERC-1155, controle de acesso por papéis (RBAC), trilha documental e fluxo logístico com reconciliação de massa.
+**Classification:** Independent Project · Study Project · Experimental
 
-## 👤 Autor
+A Solidity and Foundry study project for pharmaceutical batch traceability using an ERC-1155-based model, role-based access control, documents, quality status transitions, and a simulated logistics workflow.
 
-- Wesley Rodrigues Tereciani
-- Especialista Fullstack WEB3/Blockchain
+The main contract is named `PharmaChainERP` and is implemented in [src/Cannabis.sol](src/Cannabis.sol). The filename is retained from the original study structure; it does not describe a commercial cannabis product.
 
-## 🎯 Escopo funcional
+## Scope and limitations
 
-O contrato `PharmaChainERP` implementa:
+- Local development and testnet-oriented experimentation only.
+- The repository does not claim commercial deployment, external users, regulatory approval, or an external audit.
+- UUPS upgradeability and privileged roles are included as subjects for study and require independent review before any real use.
+- Test and coverage figures are repository snapshots and should be reproduced locally.
 
-- criação de lotes com validade (`mintBatch`);
-- aprovação e reprovação por qualidade (`releaseBatch`, `rejectBatch`);
-- recall sanitário (`executeRecall`);
-- anexos documentais de compliance (`COA`, `NFE`, `CTE`, `NCR`, `LOSS_REPORT`);
-- despacho e recebimento com validação de custódia (`shipBatch`, `receiveShipment`);
-- bloqueio de transferência direta de tokens (`safeTransferFrom`/`safeBatchTransferFrom`);
-- upgrade UUPS com autorização por `ADMIN_ROLE`.
+## Project structure
 
-## 🛡️ Papéis (RBAC)
+- Contract: `src/Cannabis.sol`
+- Foundry tests: `test/`
+- Deployment scripts: `script/`
+- Environment template: `.env.example`
 
-- `ADMIN_ROLE`: governança, pause/unpause e upgrades.
-- `ORACLE_ROLE`: atualização de licenças de atores.
-- `PRODUCTION_ROLE`: criação de lotes e operações de produção.
-- `QUALITY_ROLE`: liberação, reprovação e recall.
-- `LOGISTICS_ROLE`: fluxo logístico e documentos de transporte.
+## Development
 
-## 🔐 Regras de segurança e compliance
-
-- validação de existência de lote em operações sensíveis;
-- validação de entradas (GTIN, hashes, URIs, endereços e quantidades);
-- restrição de circulação para lote em `RECALL`, `REJECTED`, `QUARANTINE` e vencido;
-- proteção contra reentrância em fluxos críticos (`nonReentrant`);
-- pausa global operacional (`pauseContract`/`unpauseContract`);
-- política de transições válidas de status.
-
-## 🧱 Estrutura do projeto
-
-- Contrato principal: `src/Cannabis.sol`
-- Testes base/shared: `test/PharmaChainERPBase.t.sol`
-- Testes unitários: `test/PharmaChainERP.Unit.t.sol`
-- Testes de integração: `test/PharmaChainERP.Integration.t.sol`
-- Testes fuzz: `test/PharmaChainERP.Fuzz.t.sol`
-- Testes de gas budget: `test/PharmaChainERP.Gas.t.sol`
-- Testes de segurança: `test/PharmaChainERP.Security.t.sol`
-- Scripts de deploy/configuração: `script/DeployPharmaChain.s.sol`, `script/ConfigurePharmaChainRoles.s.sol`
-
-## ⚙️ Ambiente (Foundry)
-
-Dependências:
-
-- `openzeppelin-contracts-upgradeable` `v4.9.6`
-- `openzeppelin-contracts` `v4.9.6`
-- `forge-std`
-
-Comandos úteis:
+Requirements: Foundry and Solidity 0.8.20+.
 
 ```bash
+cp .env.example .env
 make build
 make test
 make gas
 ```
 
-## 🚀 Deploy e configuração
+For local deployment, use Anvil and follow the Makefile targets. Never commit populated `.env` files or private keys.
 
-Fluxo local com Anvil:
+## License
 
-```bash
-anvil
-cp .env.example .env
-source .env
-make deploy
-# atualizar PHARMA_PROXY no .env com o proxy retornado
-source .env
-make roles
-```
+MIT. See [LICENSE](LICENSE).
 
-Para testnet, use seu `RPC_URL` e `PRIVATE_KEY` no `.env`.
+## Author
 
-## 🧪 Testes e cobertura
-
-Status atual da suíte:
-
-- `43` testes passando (`forge test -vv`)
-- sem falhas
-
-Cobertura atual de `src/Cannabis.sol` (medida com `forge coverage` em 20/02/2026):
-
-- linhas: `99.41%` (`168/169`)
-- statements: `96.59%` (`170/176`)
-- branches: `87.62%` (`92/105`)
-- funções: `100%` (`28/28`)
-
-Execução por categoria:
-
-```bash
-forge test --match-path test/PharmaChainERP.Unit.t.sol
-forge test --match-path test/PharmaChainERP.Integration.t.sol
-forge test --match-path test/PharmaChainERP.Fuzz.t.sol
-forge test --match-path test/PharmaChainERP.Gas.t.sol
-forge test --match-path test/PharmaChainERP.Security.t.sol
-```
-
-## 📝 Observações
-
-- O contrato é upgradeável (UUPS), então o deploy recomendado em ambientes reais é via proxy.
-
-## 🔗 Referências
-
-- [GMP Compliance](https://www.gmp-compliance.org/)
+Lello Tereciani
